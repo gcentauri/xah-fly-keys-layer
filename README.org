@@ -21,6 +21,9 @@ time contributer to the Emacs community.
 Gain the modal superpowers of the dark side, without succumbing to evil!
 
 * Install
+Clone this repository into `.emacs.d/private/xah-fly-keys`, or where ever you 
+keep your private layers.
+
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
 add =xah-fly-keys= to the existing =dotspacemacs-configuration-layers= list in this
 file.
@@ -51,4 +54,10 @@ I tried implementing this with a config variable, but it doesn't quite work as e
         (define-key xah-fly-key-map (kbd "M-m") xah-fly-leader-key-map))
 #+END_SRC
 
+I think it might have something to do with the load order here:
 
+#+BEGIN_EXAMPLE
+Loading xah-fly-keys...done
+activating xah-fly-keys
+Loading /Users/gshang/spacemacs-dev/.emacs.d/layers/+distributions/spacemacs-base/keybindings.el (source)...done
+#+END_EXAMPLE
