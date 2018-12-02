@@ -1,0 +1,54 @@
+#+TITLE: xah-fly-keys layer
+
+# The maximum height of the logo should be 200 pixels.
+[[img/xah-fly-keys.png]]
+
+# TOC links should be GitHub style anchors.
+* Table of Contents                                        :TOC_4_gh:noexport:
+- [[#description][Description]]
+- [[#install][Install]]
+- [[#key-bindings][Key bindings]]
+  - [[#swap-the-leader-keys][Swap the leader keys]]
+
+* Description
+
+This layer adds an alternative "modal editing mode for Emacs, like vi, but
+the design of key/command choice is based on command frequency statistics
+and ease-of-key score. Most frequently used commands have most easy keys."
+[[http://ergoemacs.org/misc/ergoemacs_vi_mode.html][xah-fly-keys]] has been developed over years of experience by Xah Lee, a long
+time contributer to the Emacs community.
+
+Gain the modal superpowers of the dark side, without succumbing to evil!
+
+* Install
+To use this configuration layer, add it to your =~/.spacemacs=. You will need to
+add =xah-fly-keys= to the existing =dotspacemacs-configuration-layers= list in this
+file.
+
+This layer assumes a "qwerty" layout and uses that as a default.  You can configure 
+xah-fly-keys to behave with other keyboard layouts with the =xah-fly-keys-layout=
+variable. Possible values are `qwerty', `qwerty-abnt', `qwertz', `dvorak', 
+`programer-dvorak', `colemak', `colemak-mod-dh', `workman'".
+
+* Key bindings
+
+| Key Binding | Description    |
+|-------------+----------------|
+| ~SPC x x x~ | Does thing01   |
+# Use GitHub URLs if you wish to link a Spacemacs documentation file or its heading.
+# Examples:
+# [[https://github.com/syl20bnr/spacemacs/blob/master/doc/VIMUSERS.org#sessions]]
+# [[https://github.com/syl20bnr/spacemacs/blob/master/layers/%2Bfun/emoji/README.org][Link to Emoji layer README.org]]
+# If space-doc-mode is enabled, Spacemacs will open a local copy of the linked file.
+
+** Swap the leader keys
+I tried implementing this with a config variable, but it doesn't quite work as expected.
+
+#+BEGIN_SRC elisp
+(when xah-fly-keys-swap-spacemacs-leader
+      (progn
+        (define-key xah-fly-key-map (kbd "SPC") 'spacemacs-cmds)
+        (define-key xah-fly-key-map (kbd "M-m") xah-fly-leader-key-map))
+#+END_SRC
+
+
