@@ -7,6 +7,7 @@
 * Table of Contents                                        :TOC_4_gh:noexport:
 - [[#description][Description]]
 - [[#install][Install]]
+  - [[#configuration][Configuration]]
 - [[#key-bindings][Key bindings]]
   - [[#swap-the-leader-keys][Swap the leader keys]]
 
@@ -21,17 +22,33 @@ time contributer to the Emacs community.
 Gain the modal superpowers of the dark side, without succumbing to evil!
 
 * Install
-Clone this repository into `.emacs.d/private/xah-fly-keys`, or where ever you 
+Clone this repository into `.emacs.d/private/xah-fly-keys`, or where ever you
 keep your private layers.
 
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
 add =xah-fly-keys= to the existing =dotspacemacs-configuration-layers= list in this
-file.
+file.  You should have the =dotspacemacs-editing-style= set to ='emacs=.
 
-This layer assumes a "qwerty" layout and uses that as a default.  You can configure 
+It is recommended to change some of the defaults in your =.spacemacs= file, in
+order to avoid some unwanted cross-over with some features.
+
+  - set =dotspacemacs-colorize-cursor-according-to-state nil= so that the cursor will
+    reflect the =xah-fly-keys= state instead.
+  - set the =dotspacemacs-leader-key= to an empty string, as having it set to ="SPC"=
+    interferes with the =which-key= mappings.
+
+** Configuration
+
+This layer assumes a "qwerty" layout and uses that as a default.  You can configure
 xah-fly-keys to behave with other keyboard layouts with the =xah-fly-keys-layout=
-variable. Possible values are `qwerty', `qwerty-abnt', `qwertz', `dvorak', 
+variable. Possible values are `qwerty', `qwerty-abnt', `qwertz', `dvorak',
 `programer-dvorak', `colemak', `colemak-mod-dh', `workman'".
+
+For example, in your layers list:
+
+#+BEGIN_SRC elisp
+(xah-fly-keys :variables xah-fly-keys-layout "dvorak")
+#+END_SRC
 
 * Key bindings
 
