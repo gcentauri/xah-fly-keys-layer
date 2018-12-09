@@ -32,7 +32,7 @@
 (defconst xah-fly-keys-packages
   '(
     xah-fly-keys
-    ;; magit
+    magit
     )
   )
 
@@ -42,10 +42,6 @@
     :diminish (xah-fly-keys . "∑")
     :init
     (setq xah-fly-use-control-key nil)
-
-    ;; try to integrate with this variable properly, write highlight
-    ;; code to mimic evil mode state
-    (setq dotspacemacs-colorize-cursor-according-to-state nil)
 
     :config
     (xah-fly-keys-set-layout xah-fly-keys-layout)
@@ -57,13 +53,15 @@
     )
   )
 
+(defun xah-fly-keys/pre-init-magit ()
+  "Switches to insert mode so standard magit keys are available immediately in
+magit buffers and popups"
+  (spacemacs|use-package-add-hook magit
+    :post-init
+    (progn
+      (add-hook 'magit-mode-hook 'xah-fly-insert-mode-activate)
+      (add-hook 'magit-popup-mode-hook 'xah-fly-insert-mode-activate)
+      )
+    ))
 
-;; (defun xah-fly-keys/pre-init-magit ()
-;;   (spacemacs|use-package-add-hook magit
-;;     :post-init
-;;     (progn
-;;       (add-hook 'magit-mode-hook 'xah-fly-insert-mode-activate)
-;;       (add-hook 'magit-popup-mode-hook 'xah-fly-insert-mode-activate)
-;;       )
-;;     ))
-;;; packages.el ends here
+;; packages.el ends here
