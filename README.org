@@ -52,29 +52,29 @@ For example, in your layers list:
 
 * Key bindings
 
-| Key Binding | Description    |
-|-------------+----------------|
-| ~SPC x x x~ | Does thing01   |
-# Use GitHub URLs if you wish to link a Spacemacs documentation file or its heading.
-# Examples:
-# [[https://github.com/syl20bnr/spacemacs/blob/master/doc/VIMUSERS.org#sessions]]
-# [[https://github.com/syl20bnr/spacemacs/blob/master/layers/%2Bfun/emoji/README.org][Link to Emoji layer README.org]]
-# If space-doc-mode is enabled, Spacemacs will open a local copy of the linked file.
+| Key Binding | Description                          |
+|-------------+--------------------------------------|
+| ~SPC~       | opens the xah-fly-keys leader keymap |
+| ~M-m~       | opens the spacemacs commands keymap  |
+
+See [[http://ergoemacs.org/misc/ergoemacs_vi_mode.html][xah-fly-keys]] for the modal keymap defined by Xah Lee.
 
 ** Swap the leader keys
+If you'd like to have the spacemacs leader key on the space bar rather than the xah-fly-keys
+menu, it is possible to swap these keys.
+
 I tried implementing this with a config variable, but it doesn't quite work as expected.
+Until that is sorted out, add this to your =dotspacemacs/user-config= to swap the leader
+keys for Spacemacs and xah-fly-keys.
 
 #+BEGIN_SRC elisp
-(when xah-fly-keys-swap-spacemacs-leader
+(defun xah-fly-keys-swap-spacemacs-leader ()
       (progn
         (define-key xah-fly-key-map (kbd "SPC") 'spacemacs-cmds)
-        (define-key xah-fly-key-map (kbd "M-m") xah-fly-leader-key-map))
+        (define-key xah-fly-key-map (kbd "M-m") 'xah-fly-leader-key-map)))
+
+(add-hook 'xah-fly-command-mode-activate-hook 'xah-fly-keys-swap-spacemacs-leader)
 #+END_SRC
 
-I think it might have something to do with the load order here:
-
-#+BEGIN_EXAMPLE
-Loading xah-fly-keys...done
-activating xah-fly-keys
-Loading /Users/gshang/spacemacs-dev/.emacs.d/layers/+distributions/spacemacs-base/keybindings.el (source)...done
-#+END_EXAMPLE
+You'll also need to set the =dotspacemacs-emacs-leader= key to an empty string.
+It appears that sometimes the =which-key= menu will be affected by this change.
