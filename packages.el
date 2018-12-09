@@ -36,6 +36,7 @@
     )
   )
 
+
 (defun xah-fly-keys/init-xah-fly-keys ()
   (use-package xah-fly-keys
     ;; :defer t
@@ -54,8 +55,7 @@
   )
 
 (defun xah-fly-keys/pre-init-magit ()
-  "Switches to insert mode so standard magit keys are available immediately in
-magit buffers and popups"
+  "Switch to insert mode in magit buffers and popups."
   (spacemacs|use-package-add-hook magit
     :post-init
     (progn
