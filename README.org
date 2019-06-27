@@ -14,21 +14,22 @@
   - [[#sub-keymaps][Sub keymaps]]
 
 * Description
-This layer adds an alternative modal editing mode for Emacs, "like vi, but
-the design of key/command choice is based on command frequency statistics
-and ease-of-key score. Most frequently used commands have most easy keys."
-[[http://ergoemacs.org/misc/ergoemacs_vi_mode.html][xah-fly-keys]] has been developed over years of experience by Xah Lee, a long
-time contributer to the Emacs community.
+This layer adds an alternative modal editing mode for Emacs.
+
+#+BEGIN_QUOTE
+"like vi, but the design of key/command choice is based on command frequency statistics and ease-of-key score. Most frequently used commands have most easy keys."
+#+END_QUOTE
+
+[[http://ergoemacs.org/misc/ergoemacs_vi_mode.html][xah-fly-keys]] has been developed over years of experience by Xah Lee, a long time contributer to the Emacs community.
 
 Gain the modal superpowers of the dark side, without succumbing to evil!
 
 ** Features:
 
-- You NEVER need to press 【Ctrl+x】! Use leader key instead!
-- There are about 200 commands with leader key sequence.
+- You NEVER need to press 【Ctrl+x】or Meta! Use a leader key instead!
+- There are about 200 commands with leader key sequences.
 - Efficient keys for common navigation and editing tasks in command mode.
-- Keybindings based on experience and [[http://ergoemacs.org/emacs/command-frequency.html][observed frequency of use]].
-- Never need to press Meta!
+- The key bindings are based on experience and [[http://ergoemacs.org/emacs/command-frequency.html][observed frequency of use]].
 
 * Install
 Clone this repository into =.emacs.d/private/xah-fly-keys=, or where ever you
@@ -36,32 +37,39 @@ keep your private layers.
 
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
 add =xah-fly-keys= to the existing =dotspacemacs-configuration-layers= list in 
-this file. You should have the =dotspacemacs-editing-style= set to =\'emacs=.
+this file. You should have the =dotspacemacs-editing-style= set to ='emacs=.
 
 It is recommended to change some of the defaults in your =.spacemacs= file, in
-order to avoid some unwanted cross-over with some keybindings.
+order to avoid some unwanted cross-over with some key bindings.
 
-  - set =dotspacemacs-colorize-cursor-according-to-state nil= so that the cursor
-    will reflect the =xah-fly-keys= state instead.
   - set the =dotspacemacs-leader-key= to an empty string, as having it set to 
     =SPC= interferes with the =which-key= mappings.
+  - set =dotspacemacs-colorize-cursor-according-to-state nil= so that the cursor
+    will reflect the =xah-fly-keys= state instead.
 
 ** Configuration
 
-This layer assumes a "qwerty" layout and uses that as a default.  You can configure
-xah-fly-keys to behave with other keyboard layouts with the =xah-fly-keys-layout=
-variable. Possible values are `qwerty', `qwerty-abnt', `qwertz', `dvorak',
-`programer-dvorak', `colemak', `colemak-mod-dh', `workman'".
+This layer assumes a =qwerty= layout and uses that by default. You can configure
+xah-fly-keys to use other keyboard layouts with the =xah-fly-keys-layout=
+variable.
 
-For example, in your layers list:
+The possible values are:
+- =azerty=, =azerty-be=
+- =colemak=, =colemak-mod-dh=
+- =dvorak=, =programer-dvorak=
+- =qwerty=, =qwerty-abnt=
+- =qwertz=
+- =workman=
+
+For example, to use the =dvorak= layout, add the following to your layers list:
 
 #+BEGIN_SRC elisp
 (xah-fly-keys :variables xah-fly-keys-layout "dvorak")
 #+END_SRC
 
 ** Swap the leader keys
-If you'd like to have the spacemacs leader key on the space bar rather than the xah-fly-keys
-menu, it is possible to swap these keys.
+If you'd like to have the Spacemacs leader key on the space bar rather than the xah-fly-keys
+menu, then it's possible to swap them.
 
 I tried implementing this with a config variable, but it doesn't quite work as expected.
 Until that is sorted out, add this to your =dotspacemacs/user-config= to swap the leader
@@ -85,7 +93,7 @@ See [[http://ergoemacs.org/misc/ergoemacs_vi_mode.html][xah-fly-keys]] for the m
 
 ** Command mode
 
-| Key Binding | Description                              |
+| Key binding | Description                              |
 |-------------+------------------------------------------|
 | ~M-m~       | spacemacs commands keymap                |
 | ~ESC~       | xah-fly-leader-key-map                   |
@@ -190,9 +198,9 @@ See [[http://ergoemacs.org/misc/ergoemacs_vi_mode.html][xah-fly-keys]] for the m
 
 ** Sub keymaps
 
-You'll notice there are several sub keymaps after pressing the leader key.
+You'll notice that there are several sub keymaps after pressing a leader key.
 These are organized by ease of use, and should really be categorized by
-finger and keyboard row.  I've listed some of the functionality for each of the
+finger and keyboard row. I've listed some of the functionality for each of the
 keymaps, but use =which-key= and you'll discover more details.
 
 - 【SPC ,】 - Eval, kill emacs
