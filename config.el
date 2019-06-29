@@ -14,3 +14,9 @@
 (defvar xah-fly-keys-layout "qwerty"
   "Set to your preferred layout. Possible values are `qwerty', `qwerty-abnt',
 `qwertz', `dvorak', `programer-dvorak', `colemak', `colemak-mod-dh', `workman'")
+
+(defvar xah-fly-keys-command-mode-cursor '("deep pink" . box)
+  "Set to a '(`COLOR' . `CURSOR-TYPE') pair. Defaults to '(\"deep pink\" . box)")
+
+(defvar xah-fly-keys-insert-mode-cursor '("Dark Turquoise" . bar)
+  "Set to a '(`COLOR' . `CURSOR-TYPE') pair. Defaults to '(\"Dark Turquoise\" . bar)")
