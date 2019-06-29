@@ -14,8 +14,6 @@
 (defconst xah-fly-keys-packages
   '(
     xah-fly-keys
-    helm
-    ivy
     magit
     )
   )
