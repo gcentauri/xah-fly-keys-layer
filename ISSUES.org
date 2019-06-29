@@ -1,0 +1,90 @@
+* TODO Fix conflicting paredit ; binding
+
+Paredit binds this to comment out expressions in lisp modes
+
+#+begin_src elisp
+(add-hook 'paredit-mode-hook (lambda () (define-key paredit-mode-map ";" nil)))
+#+end_src
+
+* DONE Add: customiziable cursor color/shape
+  CLOSED: [2019-06-29 Sat 15:09]
+
+** cursor-type
+#+begin_example
+  t               use the cursor specified for the frame
+  nil             don’t display a cursor
+  box             display a filled box cursor
+  hollow          display a hollow box cursor
+  bar             display a vertical bar cursor with default width
+  (bar . WIDTH)   display a vertical bar cursor with width WIDTH
+  hbar            display a horizontal bar cursor with default height
+  (hbar . HEIGHT) display a horizontal bar cursor with height HEIGHT
+  ANYTHING ELSE   display a hollow box cursor
+#+end_example
+
+* TODO Figure out how to handle all supported keyboard layouts
+* TODO Integrate with set cursor according to state                    :evil: 
+
+#+begin_example
+spacemacs-evil-cursors is a variable defined in ‘config.el’.
+Its value is shown below.
+
+Documentation:
+Colors assigned to evil states with cursor definitions.
+To add your own, use ‘spacemacs/add-evil-curosr’.
+
+Value:
+(("normal" "DarkGoldenrod2" box)
+ ("insert" "chartreuse3"
+  (bar . 2))
+ ("emacs" "SkyBlue2" box)
+ ("hybrid" "SkyBlue2"
+  (bar . 2))
+ ("replace" "chocolate"
+  (hbar . 2))
+ ("evilified" "LightGoldenrod3" box)
+ ("visual" "gray"
+  (hbar . 2))
+ ("motion" "plum3" box)
+ ("lisp" "HotPink1" box)
+ ("iedit" "firebrick1" box)
+ ("iedit-insert" "firebrick1"
+  (bar . 2)))
+#+end_example
+
+would require integrating xfk as evil states
+
+eg... 
+
+#+begin_src elisp
+;; This code is from evil insert state definition, any change upstream
+;; should be reflected here
+;; see https://github.com/emacs-evil/evil/blob/56e92f7cb4e04e665670460093b41f58446b7a2b/evil-states.el#L108
+(evil-define-state hybrid
+  "Hybrid state for hybrid mode."
+  :tag " <H> "
+  :cursor (bar . 2)
+  :message "-- HYBRID --"
+  :entry-hook (evil-start-track-last-insertion)
+  :exit-hook (evil-cleanup-insert-state evil-stop-track-last-insertion)
+  :input-method t
+  (cond
+   ((evil-hybrid-state-p)
+    (add-hook 'post-command-hook #'evil-maybe-remove-spaces)
+    (add-hook 'pre-command-hook #'evil-insert-repeat-hook)
+    (setq evil-maybe-remove-spaces t)
+    (unless (eq evil-want-fine-undo t)
+      (evil-start-undo-step)))
+   (t
+    (remove-hook 'post-command-hook #'evil-maybe-remove-spaces)
+    (remove-hook 'pre-command-hook #'evil-insert-repeat-hook)
+    (evil-maybe-remove-spaces t)
+    (setq evil-insert-repeat-info evil-repeat-info)
+    (evil-set-marker ?^ nil t)
+    (unless (eq evil-want-fine-undo t)
+      (evil-end-undo-step))
+    (when evil-move-cursor-back
+      (when (or (evil-normal-state-p evil-next-state)
+                (evil-motion-state-p evil-next-state))
+        (evil-move-cursor-back))))))
+#+end_example
