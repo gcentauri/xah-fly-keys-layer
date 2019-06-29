@@ -14,6 +14,8 @@
 (defconst xah-fly-keys-packages
   '(
     xah-fly-keys
+    helm
+    ivy
     magit
     )
   )
@@ -35,6 +37,7 @@
     (xah-fly-keys 1)
     )
   )
+
 
 (defun xah-fly-keys/pre-init-magit ()
   "Switch to insert mode in magit buffers and popups."
