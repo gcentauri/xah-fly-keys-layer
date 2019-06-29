@@ -35,8 +35,13 @@ Gain the modal superpowers of the dark side, without succumbing to evil!
 
 * Install
 Clone this repository into =.emacs.d/private/xah-fly-keys=, or where ever you
-keep your private layers. Note that the name of the cloned repository will be 
-"xah-fly-keys-layer" and you should rename it to "xah-fly-keys".
+keep your private layers:
+
+#+begin_src sh
+git clone https://github.com/gcentauri/xah-fly-keys-layer.git ~/.emacs.d/private/xah-fly-keys
+#+end_src
+
+Note - the directory the layer files are in must be named =xah-fly-keys=.
 
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
 add =xah-fly-keys= to the existing =dotspacemacs-configuration-layers= list in 
