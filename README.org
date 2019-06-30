@@ -80,7 +80,7 @@ For example, to use the =dvorak= layout, add the following to your layers list:
 *** Cursor appearance for command and insert modes
 You can customize the appearance of the cursor using two variables,
 =xah-fly-keys-command-mode-cursor= and =xah-fly-keys-insert-mode-cursor=.
-Both variables are a pair like ='(COLOR . CURSOR-TYPE)=. =COLOR= is a string,
+Both variables are a pair of the form =(COLOR . CURSOR-TYPE)=. =COLOR= is a string,
 either one of the defined color words in the =list-colors-display= or a hex
 code for the color. The =CURSOR-TYPE= is one of the types that can be set on
 the =cursor-type= variable:
