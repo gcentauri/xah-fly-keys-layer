@@ -1,4 +1,5 @@
-* TODO Fix conflicting paredit ; binding
+* TODO [#A] Add: helm/ivy conditional binding of M-x function
+* TODO [#B] Fix: conflicting paredit ; binding
 
 Paredit binds this to comment out expressions in lisp modes
 
@@ -22,8 +23,11 @@ Paredit binds this to comment out expressions in lisp modes
   ANYTHING ELSE   display a hollow box cursor
 #+end_example
 
-* TODO Figure out how to handle all supported keyboard layouts
-* TODO Integrate with set cursor according to state                    :evil: 
+* DONE Figure out how to handle all supported keyboard layouts
+  CLOSED: [2019-06-29 Sat 23:20]
+  use =xah-fly--define-keys= and dvorak key names
+* DONE [#C] Integrate with set cursor according to state :wontfix:evil:
+  CLOSED: [2019-06-29 Sat 23:21]
 
 #+begin_example
 spacemacs-evil-cursors is a variable defined in ‘config.el’.
@@ -54,7 +58,7 @@ Value:
 
 would require integrating xfk as evil states
 
-eg... 
+eg...
 
 #+begin_src elisp
 ;; This code is from evil insert state definition, any change upstream
