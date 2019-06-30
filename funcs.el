@@ -6,7 +6,7 @@
     (xah-fly--define-keys
      xah-fly-key-map
      '(
-       ("b" . xah-fly-keys-search-function)
+       ("b" . xah-fly-keys-isearch)
        )))
 
   (defun xah-fly-keys-insert-mode-on ()
@@ -14,10 +14,6 @@
     (set-cursor-color (car xah-fly-keys-insert-mode-cursor))
     (setq cursor-type (cdr xah-fly-keys-insert-mode-cursor)))
 
-  (defun xah-fly-keys-search-function ()
-    (interactive)
-    (cond
-     ((configuration-layer/package-usedp 'helm) (helm-swoop))
-     ((configuration-layer/package-usedp 'ivy) (swiper))
-     (t (isearch-forward))))
+  (defun xah-fly-keys-isearch ()
+    (interactive) (command-execute xah-fly-keys-search-function))
   )

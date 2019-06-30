@@ -20,3 +20,7 @@
 
 (defvar xah-fly-keys-insert-mode-cursor '("Dark Turquoise" . bar)
   "Set to a '(`COLOR' . `CURSOR-TYPE') pair. Defaults to '(\"Dark Turquoise\" . bar)")
+
+(defvar xah-fly-keys-search-function 'isearch-forward
+  "Set to preferred incremental search command. Uses `helm-swoop' or Ivy's
+`swiper' if available.")
