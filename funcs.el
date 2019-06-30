@@ -3,7 +3,11 @@
     (global-hl-line-mode 1)
     (set-cursor-color (car xah-fly-keys-command-mode-cursor))
     (setq cursor-type (cdr xah-fly-keys-command-mode-cursor))
-    (define-key xah-fly-key-map (kbd "n") 'xah-fly-keys-search-function))
+    (xah-fly--define-keys
+     xah-fly-key-map
+     '(
+       ("b" . xah-fly-keys-search-function)
+       )))
 
   (defun xah-fly-keys-insert-mode-on ()
     (global-hl-line-mode 0)
