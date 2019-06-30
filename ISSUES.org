@@ -1,11 +1,3 @@
-* DONE [#A] Add: helm/ivy conditional binding of M-x function
-  CLOSED: [2019-06-30 Sun 14:11]
-For now, I just ensure M-x is bound to =execute-extended-command= which Ivy
-handles on its own to make =counsel-M-x=.
-
-This does not work for helm, so the post-init functions for helm and ivy take
-care of ensuring it is set correctly for those layers.
-
 * TODO [#B] Fix: conflicting paredit ; binding
 
 Paredit binds this to comment out expressions in lisp modes
@@ -33,7 +25,7 @@ Paredit binds this to comment out expressions in lisp modes
 * DONE Figure out how to handle all supported keyboard layouts
   CLOSED: [2019-06-29 Sat 23:20]
   use =xah-fly--define-keys= and dvorak key names
-* DONE [#C] Integrate with set cursor according to state :wontfix:evil:
+* DONE Integrate with set cursor according to state            :wontfix:evil:
   CLOSED: [2019-06-29 Sat 23:21]
 
 #+begin_example
@@ -99,3 +91,10 @@ eg...
                 (evil-motion-state-p evil-next-state))
         (evil-move-cursor-back))))))
 #+end_example
+* DONE Add: helm/ivy conditional binding of M-x function
+  CLOSED: [2019-06-30 Sun 14:11]
+For now, I just ensure M-x is bound to =execute-extended-command= which Ivy
+handles on its own to make =counsel-M-x=.
+
+This does not work for helm, so the post-init functions for helm and ivy take
+care of ensuring it is set correctly for those layers.
