@@ -46,13 +46,13 @@ git clone https://github.com/gcentauri/xah-fly-keys-layer.git ~/.emacs.d/private
 Note - the directory the layer files are in must be named =xah-fly-keys=.
 
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
-add =xah-fly-keys= to the existing =dotspacemacs-configuration-layers= list in 
+add =xah-fly-keys= to the existing =dotspacemacs-configuration-layers= list in
 this file. You should have the =dotspacemacs-editing-style= set to ='emacs=.
 
 It is recommended to change some of the defaults in your =.spacemacs= file, in
 order to avoid some unwanted cross-over with some key bindings.
 
-  - set the =dotspacemacs-leader-key= to an empty string, as having it set to 
+  - set the =dotspacemacs-leader-key= to an empty string, as having it set to
     =SPC= interferes with the =which-key= mappings.
   - set =dotspacemacs-colorize-cursor-according-to-state nil= so that the cursor
     will reflect the =xah-fly-keys= state instead.
@@ -78,8 +78,10 @@ For example, to use the =dvorak= layout, add the following to your layers list:
 #+END_SRC
 
 *** Cursor appearance for command and insert modes
-You can customize the appearance of the cursor using two variables,
-=xah-fly-keys-command-mode-cursor= and =xah-fly-keys-insert-mode-cursor=.
+You can customize the appearance of the cursor using two variables:
+  - =xah-fly-keys-command-mode-cursor=
+  - =xah-fly-keys-insert-mode-cursor=
+
 Both variables are a pair of the form =(COLOR . CURSOR-TYPE)=. =COLOR= is a string,
 either one of the defined color words in the =list-colors-display= or a hex
 code for the color. The =CURSOR-TYPE= is one of the types that can be set on
@@ -117,7 +119,7 @@ Otherwise it will be =isearch-foward=. You can set it to your preferred command.
 
 *** Preferred M-x function
 This defaults to the standard =execute-extended-command=, which seems to be
-remapped by helm or ivy if those layers are installed. Set this variable if 
+remapped by helm or ivy if those layers are installed. Set this variable if
 you prefer another =M-x= command or need to configure it explicitly.
 
 #+BEGIN_SRC elisp
