@@ -1,4 +1,11 @@
-* TODO [#A] Add: helm/ivy conditional binding of M-x function
+* DONE [#A] Add: helm/ivy conditional binding of M-x function
+  CLOSED: [2019-06-30 Sun 14:11]
+For now, I just ensure M-x is bound to =execute-extended-command= which Ivy
+handles on its own to make =counsel-M-x=.
+
+This does not work for helm, so the post-init functions for helm and ivy take
+care of ensuring it is set correctly for those layers.
+
 * TODO [#B] Fix: conflicting paredit ; binding
 
 Paredit binds this to comment out expressions in lisp modes
