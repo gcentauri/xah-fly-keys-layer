@@ -9,6 +9,8 @@
   - [[#configuration][Configuration]]
     - [[#keyboard-layout][Keyboard layout]]
     - [[#cursor-appearance-for-command-and-insert-modes][Cursor appearance for command and insert modes]]
+    - [[#preferred-incremental-search-function][Preferred incremental search function]]
+    - [[#preferred-m-x-function][Preferred M-x function]]
   - [[#swap-the-leader-keys][Swap the leader keys]]
 - [[#key-bindings][Key bindings]]
   - [[#command-mode][Command mode]]
@@ -104,6 +106,23 @@ For example,
 #+end_src
 
 It defaults to very distinctive, contrasting cursors to help indicate state. :smile:
+
+*** Preferred incremental search function
+This will default to either =helm-swoop= or =swiper= if helm/ivy layer is used.
+Otherwise it will be =isearch-foward=. You can set it to your preferred command.
+
+#+BEGIN_SRC elisp
+(xah-fly-keys :variables xah-fly-keys-search-function 'helm-swoop)
+#+END_SRC
+
+*** Preferred M-x function
+This defaults to the standard =execute-extended-command=, which seems to be
+remapped by helm or ivy if those layers are installed. Set this variable if 
+you prefer another =M-x= command or need to configure it explicitly.
+
+#+BEGIN_SRC elisp
+(xah-fly-keys :variables xah-fly-keys-M-x-function 'counsel-M-x)
+#+END_SRC
 
 ** Swap the leader keys
 If you'd like to have the Spacemacs leader key on the space bar rather than the xah-fly-keys
