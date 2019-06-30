@@ -6,6 +6,7 @@
     (xah-fly--define-keys
      xah-fly-key-map
      '(
+       ("a" . xah-fly-keys-M-x)
        ("b" . xah-fly-keys-isearch)
        )))
 
@@ -16,4 +17,7 @@
 
   (defun xah-fly-keys-isearch ()
     (interactive) (command-execute xah-fly-keys-search-function))
+
+  (defun xah-fly-keys-M-x ()
+    (interactive) (command-execute xah-fly-keys-M-x-function))
   )

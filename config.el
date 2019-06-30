@@ -24,3 +24,6 @@
 (defvar xah-fly-keys-search-function 'isearch-forward
   "Set to preferred incremental search command. Uses `helm-swoop' or Ivy's
 `swiper' if available.")
+
+(defvar xah-fly-keys-M-x-function 'execute-extended-command
+  "Set to preferred M-x function. Uses `helm-M-x' or `counsel-M-x' if available.")
