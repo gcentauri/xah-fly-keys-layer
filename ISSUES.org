@@ -1,3 +1,15 @@
+
+* TODO Add: 【SPC ,】 major mode keybindings
+
+I was thinking it would be nice if these hooked into major mode repls as well
+
+  - SPC , c         xah-run-current-file
+  - SPC , d         eval-defun
+  - SPC , e         eval-buffer
+  - SPC , f         eval-region
+  - SPC , m         eval-last-sexp
+  - SPC , r         eval-expression
+
 * TODO [#B] Fix: conflicting paredit ; binding
 
 Paredit binds this to comment out expressions in lisp modes
