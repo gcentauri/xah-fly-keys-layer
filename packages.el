@@ -66,9 +66,7 @@
     (with-eval-after-load 'slime
       (bind-map xah-fly-leader-key-map
         :keys ("SPC")
-        :minor-modes (xah-fly-keys-command-mode)
-        :override-minor-modes t
-        :override-mode-name xah-fly-keys-override-mode)
+        :minor-modes (xah-fly-keys-command-mode))
       (xah-fly-keys-command-mode 1)))
 
 ;; packages.el ends here
