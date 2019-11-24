@@ -27,8 +27,6 @@
     :diminish (xah-fly-keys . "∑")
     :init
     (setq xah-fly-use-control-key nil)
-    (define-minor-mode xah-fly-keys-command-mode
-      "Indicates when command mode is active so `bind-map' can give leader key precedence")
 
     :config
     (xah-fly-keys-set-layout xah-fly-keys-layout)
@@ -37,7 +35,7 @@
     (add-hook 'xah-fly-insert-mode-activate-hook  'xah-fly-keys-insert-mode-on)
     (define-key xah-fly-key-map (kbd "M-SPC") 'xah-fly-command-mode-activate)
     (xah-fly-keys 1)
-    (xah-fly-keys-command-mode 1)))
+    ))
 
 (defun xah-fly-keys/post-init-helm ()
   (setq-default
@@ -59,14 +57,9 @@
       )))
 
 (defun xah-fly-keys/post-init-slime ()
-    ;; Used to ensure the SPC leader key takes precedence over certain other minor-mode
-    ;; bindings (like several slime packages) when xah-fly-keys command mode is active
-    ;; I'm not sure if i need to require `bind-map' explicitly, as its part of the Spacemacs
-    ;; bootstrapping process?
-    (with-eval-after-load 'slime
-      (bind-map xah-fly-leader-key-map
-        :keys ("SPC")
-        :minor-modes (xah-fly-keys-command-mode))
-      (xah-fly-keys-command-mode 1)))
+  ;; hack to give xah-fly-keys precedence over the slime minor mode keybindings to SPC and ,
+  ;; paredit could potentially use this too, as it overrides the ; key
+  (with-eval-after-load 'slime
+    (push `(xah-fly-keys . ,xah-fly-key-map) minor-mode-map-alist)))
 
 ;; packages.el ends here
